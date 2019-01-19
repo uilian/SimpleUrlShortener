@@ -1,0 +1,33 @@
+version: "3"
+services:
+
+  webapp:
+    image: urlshortener:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  redis:
+      image: redis:alpine
+      ports:
+        - "6379"
+      networks:
+        - backend
+      deploy:
+        replicas: 2
+        update_config:
+          parallelism: 2
+          delay: 10s
+        restart_policy:
+          condition: on-failure
+
+networks:
+  backend:

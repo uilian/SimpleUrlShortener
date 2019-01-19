@@ -1,10 +1,9 @@
-FROM maven:3.6-jdk-8-alpine
+FROM openjdk:8-alpine
 
-COPY ./code /application
+COPY ./code/target/URLShortener*.jar /application/URLShortener.jar
 WORKDIR /application
-RUN mvn clean install
 
 EXPOSE 8080
 
-ENTRYPOINT ["mvn", "spring-boot:run"]
+ENTRYPOINT ["java", "-jar", "URLShortener.jar"]
 #CMD ["java", "Main"]

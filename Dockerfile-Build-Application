@@ -1,0 +1,7 @@
+FROM maven:3.6-jdk-8-alpine
+
+COPY ./code /application
+WORKDIR /application
+
+ENTRYPOINT ["mvn"]
+CMD ["clean", "install"]

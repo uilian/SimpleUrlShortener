@@ -29,5 +29,10 @@ services:
         restart_policy:
           condition: on-failure
 
+  app_build:
+    build:
+      context: .
+      dockerfile: Dockerfile-Build-Application      
+
 networks:
   backend:

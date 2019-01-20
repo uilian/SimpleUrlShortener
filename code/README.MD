@@ -3,6 +3,7 @@ This is a sample REST application built with SpringBoot, Redis and Docker which 
 an API to shorten URLs and redirect the generated URLs back to the original addresses.
 
 ### Versions
+
 ```
 SpringBoot: 2.1.2
 Maven: 3.*
@@ -15,6 +16,7 @@ Docker-compose: 1.21.2
 Compile and build the application before the docker image generation:
 
 ```
+cd code
 mvn clean install -DskipTests
 ```
 
@@ -35,13 +37,12 @@ docker-compose up webapp
 
 Getting a short URL:
 
-````
+```
 curl --header "Content-Type: application/json" \
     --request POST \
     --data '{"url":"http://www.google.com/"}' \      
     http://localhost:8080/  
 ```
-
 
 Calling the url saved:
 
@@ -55,8 +56,8 @@ See some statistics:
 curl --request GET http://localhost:8080/statistics
 ```
 
-
 ### TODO
+
 * Add Swagger documentation to the API.
 * Improve the statistics with more information.
 * Improve the environment switching.

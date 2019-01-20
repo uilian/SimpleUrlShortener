@@ -6,4 +6,4 @@ WORKDIR /application
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "URLShortener.jar"]
-#CMD ["java", "Main"]
+CMD ["-Dspring.profiles.active=prod"]

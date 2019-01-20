@@ -5,8 +5,8 @@ services:
     image: urlshortener:latest
     ports:
       - "8080:8080"
-    networks:
-      - backend
+    # networks:
+    #   - backend
     deploy:
       replicas: 2
       update_config:
@@ -14,13 +14,15 @@ services:
         delay: 10s
       restart_policy:
         condition: on-failure
+    depends_on:
+      - redis    
 
   redis:
       image: redis:alpine
       ports:
         - "6379:6379"
-      networks:
-        - backend
+      # networks:
+      #   - backend
       deploy:
         replicas: 2
         update_config:
@@ -34,5 +36,5 @@ services:
       context: .
       dockerfile: Dockerfile-Build-Application      
 
-networks:
-  backend:
+# networks:
+#   backend:

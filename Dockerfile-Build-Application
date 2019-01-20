@@ -4,4 +4,4 @@ COPY ./code /application
 WORKDIR /application
 
 ENTRYPOINT ["mvn"]
-CMD ["clean", "install"]
+CMD ["clean", "install -DskipTests"]

@@ -1,12 +1,12 @@
 version: "3"
 services:
-
+  
   webapp:
     image: urlshortener:latest
+    build:
+      context: .
     ports:
       - "8080:8080"
-    # networks:
-    #   - backend
     deploy:
       replicas: 2
       update_config:
@@ -21,8 +21,6 @@ services:
       image: redis:alpine
       ports:
         - "6379:6379"
-      # networks:
-      #   - backend
       deploy:
         replicas: 2
         update_config:
@@ -34,7 +32,6 @@ services:
   app_build:
     build:
       context: .
-      dockerfile: Dockerfile-Build-Application      
-
-# networks:
-#   backend:
+      dockerfile: Dockerfile-Build-Application
+    volumes: 
+      - "./code:/application"

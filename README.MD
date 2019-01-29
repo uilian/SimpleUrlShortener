@@ -2,7 +2,7 @@
 This is a sample REST application built with SpringBoot, Redis and Docker which provides
 an API to shorten URLs and redirect the generated URLs back to the original addresses.
 
-### Versions
+### Technology stack:
 
 ```
 SpringBoot: 2.1.2
@@ -13,17 +13,17 @@ Docker-compose: 1.21.2
 ```
 
 #### Building the application:
-Compile and build the application before the docker image generation:
+
+There is an docker image ready to build the application, you just need to run the following command (may take a while):
 
 ```
-cd code
-mvn clean install -DskipTests
+docker-compose up app_build
 ```
 
-Generate the docker image (may take a while)
+Generate the docker application image:
 
 ```
-docker build . -t urlshortener:latest
+docker-compose build webapp
 ```
 
 ### Running
